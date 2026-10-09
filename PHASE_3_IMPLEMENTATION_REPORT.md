@@ -64,7 +64,8 @@ Python Raw Strict 仍 FAIL：6 条 view 上游标注 + 1 条 run_nondet_unsafe R
 
 Repository：https://github.com/gqzy1/contextpass-genlayer。
 分支：phase3-frontend-integration。
-Draft PR：创建后在本文和 checkpoint 补入实际返回链接；base=main，禁止 merge。
+Draft PR：[https://github.com/gqzy1/contextpass-genlayer/pull/1](https://github.com/gqzy1/contextpass-genlayer/pull/1)；已核验 draft=true / state=open / merged=false，base=main，作者 gqzy1。
+实现/测试证据 commit：ae0bf998e68d3dd589d89f65e93fa172f5cc3668。
 后续文档补充提交不改变已测试代码和 canonical source。最终 HEAD 记录于外部交付副本，避免自引用。
 
 全部指定文档已制作：README、DEMO、TESTING、EVIDENCE_INDEX、SUBMISSION_PROJECTS、SOURCE_PROVENANCE、DEPLOYMENT_MANIFEST_STUDIONET、PROJECT_CHECKPOINT、本报告；provenance/manifest 在 intelligent-contract/ 同时提供。public manifest address/tx=null，未部署。

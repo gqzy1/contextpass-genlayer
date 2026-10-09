@@ -3,7 +3,8 @@
 Phase 3 offline product integration completed. Account gqzy1 / 155161534 verified.
 Repository: https://github.com/gqzy1/contextpass-genlayer.
 Branch: phase3-frontend-integration. Base main bootstrap: 5095cdc5503dda4642c917cfa4576d1286c36319.
-Draft PR: actual link to be inserted after creation; no merge.
+Draft PR: https://github.com/gqzy1/contextpass-genlayer/pull/1; Draft/open/unmerged, base main, author gqzy1.
+Implementation/evidence commit: ae0bf998e68d3dd589d89f65e93fa172f5cc3668. Later docs-only commit adds actual links; final HEAD is recorded in external report and PR.
 Canonical A HEAD: daf0bf9a70357fb626b0a8e732826c8db6e0c1fc, Phase 2 Draft #2 unmerged. A main is not canonical.
 Canonical SHA256: 4412035632f586b72c376fb42e618f68ff665063cf356dd727849d76dd7f08ec; byte-identical B copy.
 

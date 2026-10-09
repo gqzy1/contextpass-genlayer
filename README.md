@@ -2,6 +2,8 @@
 
 **Trust has context.** A community trusts one original issuer, fixes a scope requirement, and lets the holder apply with an original endorsement. Independent GenLayer Leader/Validators each classify the original scope. Accepted admission is bound to one space, holder and root. Revoke that root and new protected room notes stop; public history remains.
 
+[Phase 3 Draft PR #1](https://github.com/gqzy1/contextpass-genlayer/pull/1) · branch `phase3-frontend-integration` · unmerged.
+
 **Phase 3: offline product integration. Awaiting Onchain Verification.** No deployed contract, real transaction, finalized network consensus or published Pages site is claimed. All production writes are locked. [Phase report](PHASE_3_IMPLEMENTATION_REPORT.md) · [Demo](DEMO.md) · [Tests](TESTING.md) · [Evidence](EVIDENCE_INDEX.md).
 
 ## Use locally
