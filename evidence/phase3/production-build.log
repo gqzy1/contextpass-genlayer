@@ -1,0 +1,21 @@
+
+> contextpass-genlayer@0.3.0 build
+> vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 472 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.59 kB │ gzip:   0.38 kB
+dist/assets/index-C2VJYXbN.css   10.25 kB │ gzip:   2.94 kB
+dist/assets/ccip-DifaTqvp.js      2.83 kB │ gzip:   1.30 kB
+dist/assets/index-Ia705FM_.js   778.48 kB │ gzip: 190.52 kB
+
+✓ built in 203ms
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

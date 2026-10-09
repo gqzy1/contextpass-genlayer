@@ -1,0 +1,69 @@
+[
+  {
+    "name": "node-version",
+    "command": [
+      "node",
+      "--version"
+    ],
+    "cwd": "/workspace/scratch/114f91cc6678/contextpass-genlayer",
+    "started_utc": "2026-10-09T20:42:26.015531+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "npm-version",
+    "command": [
+      "npm",
+      "--version"
+    ],
+    "cwd": "/workspace/scratch/114f91cc6678/contextpass-genlayer",
+    "started_utc": "2026-10-09T20:42:26.021555+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "frontend-tests",
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--reporter=default",
+      "--reporter=json",
+      "--outputFile=evidence/phase3/frontend-results.json"
+    ],
+    "cwd": "/workspace/scratch/114f91cc6678/contextpass-genlayer",
+    "started_utc": "2026-10-09T20:42:26.138172+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "typescript-strict",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "cwd": "/workspace/scratch/114f91cc6678/contextpass-genlayer",
+    "started_utc": "2026-10-09T20:42:28.473776+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "production-build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "cwd": "/workspace/scratch/114f91cc6678/contextpass-genlayer",
+    "started_utc": "2026-10-09T20:42:29.661078+00:00",
+    "exit_code": 0
+  },
+  {
+    "name": "source-integrity",
+    "command": [
+      "npm",
+      "run",
+      "verify:source"
+    ],
+    "cwd": "/workspace/scratch/114f91cc6678/contextpass-genlayer",
+    "started_utc": "2026-10-09T20:42:30.128163+00:00",
+    "exit_code": 0
+  }
+]
