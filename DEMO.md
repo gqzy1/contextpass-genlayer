@@ -1,47 +1,47 @@
-# Phase 4E current review status — 2026-10-10
+# ContextPass — Live Demo Guide
 
-Canonical source and deployment are on **main**. A audited HEAD `c690a2200569977e99e4cde9bfd52bd86aa4a89e`; B audited HEAD `6a6e8d13c6d73e40c6d185b0918a3e11e786cedc`. Phase 4D merge PRs A #5 / B #4 are already merged. Public hosted demo loaded in Phase 4E and contains the Phase 4D create_space statement.
+**Live application:** https://gqzy1.github.io/contextpass-genlayer/  
+**Network:** GenLayer Stable Studionet · Chain ID `61999`  
+**Deployed contract:** [View in GenLayer Explorer](https://explorer-studio.genlayer.com/address/0xDe9abfBe2E4A61d23e27b552e241f5Bb1d1821b8)  
+**Project source:** [ContextPass](https://github.com/gqzy1/contextpass-genlayer) · **Contract source:** [Context-Bound Attestation](https://github.com/gqzy1/context-bound-attestation-genlayer)
 
-[Phase 4E audit](PHASE_4E_SUBMISSION_AUDIT.md) is the current submission-readiness decision and fresh test record. This patch is review-only and must not be described as READY FOR SUBMISSION before its unresolved checks are addressed and reviewed. [Live demo](https://gqzy1.github.io/contextpass-genlayer/).
+ContextPass demonstrates **non-transitive, context-bound community admission**: a credential for one scope does not automatically authorize participation in an unrelated space. A space fixes its entry requirement and trusted original issuer. The GenLayer contract checks the original credential, then independent Leader/Validator semantic evaluations decide whether its scope covers that requirement. Admission does not create a transferable credential; revoking the original root disables derived posting rights while preserving public history.
 
-Repository A source and complete B copy are identical: 17,514 bytes; SHA256 `e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d`; Git blob `10edfd3d23672789b4b600360750f5041c040f6d`. Network Stable Studionet 61999; contract `0xDe9abfBe2E4A61d23e27b552e241f5Bb1d1821b8`. Production source and dependency versions are unchanged.
+## Five-minute read-only walkthrough
 
-T01–T10 and frontend create_space transaction links were visited: FINALIZED / correct canonical destination. T07 rotation=1; T08/T10 are expected business Rollbacks, not successful writes. Frontend create_space `0x85c5037d3ac249faca70336a6760d4538dc26407181bf71d79da091e6457d02d` independently displays Return 3 in Explorer. This does not establish live testing of the other four website writes, wallet refusal, switching, mobile signing or reload recovery.
+The entire walkthrough below works without a connected wallet and does **not** create any transactions.
 
-Root #1 revoked; Space #1 historical ELIGIBLE is not current authority; Space #2 historical NOT_ELIGIBLE. Space #3 was subsequently created. `spaces=2` is the historical T10 snapshot. Python Strict's seven known SDK diagnostics remain explicit. Neither repo has a LICENSE; licensing decision is pending.
+1. **Overview — inspect verified onchain state.** Open the [live application](https://gqzy1.github.io/contextpass-genlayer/) and select **Refresh verified example · read only**. This retrieves real finalized-state data from the pinned Stable Studionet deployment. The illustration at the top of the page is labeled as an example, not a live model decision.
+2. **Spaces — compare different requirements.** Open **Spaces**, enter ID **1** and select **Read space**: the title is *React Components* and the requirement is “Contribute React UI components to this room.” Repeat with ID **2**: *Security Audit* requires “Perform security audits of production authentication systems.” Each space fixes its trusted issuer and its entry requirement.
+3. **Credentials — inspect the original scope.** Open **Credentials** and read **Root Attestation ID 1**. The original scope says “Can develop and maintain React UI components.” The root is now **revoked**. It is an issuer's assertion, not an independently verified real-world qualification.
+4. **My admissions — compare historical decisions with current rights.** In **My admissions**, use holder `0x5EDb6E65aaEA10A7B3CC34e8d5724e41D1f6da84`. Read Space ID **1** to see historical **ELIGIBLE**, and Space ID **2** to see historical **NOT_ELIGIBLE**. **Current active membership is false in both spaces.** Historical ELIGIBLE must not be treated as permission to post after root revocation.
+5. **Public notes — confirm retained history.** Read public notes for Space ID **1** to find “Hello from an approved member.” Space ID **2** has no notes in the verified example. The old note remains readable after revocation.
 
-Prior screenshots referenced by Phase 4C/4D are not present in the audited repository trees. Accessible evidence includes A `evidence/phase4c/t01-t10.json`, state/source summaries and original logs; do not claim missing raw archives or screenshot binaries are archived.
+These are recorded examples: onchain state is public and may evolve. The [October 10 verified-state readback](evidence/phase4e/sdk-current-readback.json) recorded 3 spaces, 1 original attestation, 2 decisions and 1 note; those are snapshot counts, not promised lifetime totals.
 
----
+## Independently verify the consensus and permission boundary
 
-## Historical / Superseded — retained verbatim
+| Scenario | Onchain record | What it proves |
+| --- | --- | --- |
+| Positive admission | [T04 — Space 1](https://explorer-studio.genlayer.com/tx/0xd977e00d326e41b972c1560f3912b0c7f4cc1e8766544a0c7052956243bc0e50) | A successful `ELIGIBLE` admission for the scoped React requirement |
+| Negative admission | [T07 — Space 2](https://explorer-studio.genlayer.com/tx/0xbd5200b6dfbca29c91bd4c4f0d473b4447af4042e35b7db5423766a6ced838c6) | `NOT_ELIGIBLE` after one Leader rotation; check the consensus panel |
+| Revocation | [T09 — Root 1](https://explorer-studio.genlayer.com/tx/0xcf88f40a1beab8a8c979b7c0f3442e0ba484ac79bda78da8668c4d214669f2d6) | Original issuer revokes the root credential |
+| Protected-post rejection | [T08](https://explorer-studio.genlayer.com/tx/0x42765027562169a896139dc2d676a4c0140179bdbd610c8d873e09ce6557a2dc) and [T10](https://explorer-studio.genlayer.com/tx/0x9b3365e65452c635a0663218edec0913dddf59f777b1be9209b03763959da01b) | Expected `ACTIVE_MEMBER_ONLY` business Rollbacks, **not successful posts** |
+| Real frontend transaction | [create_space — Space 3](https://explorer-studio.genlayer.com/tx/0x85c5037d3ac249faca70336a6760d4538dc26407181bf71d79da091e6457d02d) | Manually wallet-signed website write: FINALIZED / SUCCESS / Return ID 3 |
 
-# Current live demo walkthrough — Phase 4D (2026-10-10)
+The [complete T01–T10 index](https://github.com/gqzy1/context-bound-attestation-genlayer/blob/main/ONCHAIN_EVIDENCE_INDEX.md), [frontend receipt summary](evidence/phase4e/frontend-tx-summary.json) and [current-state readback](evidence/phase4e/sdk-current-readback.json) provide additional reproducible evidence.
 
-Live URL: https://gqzy1.github.io/contextpass-genlayer/. This is a newer addendum; the preserved historical guide below describes Phase 3 before publication and must not be taken as the current release status.
+## Optional: explore write flows
 
-1. Open Overview as visitor. Click `Refresh verified example · read only`: root #1 revoked, Room #1 historical ELIGIBLE/currently inactive, Room #2 NOT_ELIGIBLE/currently inactive, note history preserved.
-2. In Spaces, read ID 1 (React Components) and ID 2 (Security Audit); do not create extra review transactions.
-3. In Credentials, read root ID 1, showing issuer A, holder B, original React scope, `revoked=true`.
-4. In My admissions, read wallet B against Room #1 and #2, compare historical decision with current membership, read public room notes (Room #1 one note, Room #2 empty).
-5. Real desktop wallet A connected; the user executed **one** manual `create_space` website write. Its transaction ID is `0x85c5037d3ac249faca70336a6760d4538dc26407181bf71d79da091e6457d02d`, and the frontend displayed a matching FINALIZED readback with ID 3. This is not proof of all other frontend write methods. Details/limitations: [Phase 4D](PHASE_4D_CLOSURE_REPORT.md).
+The published interface provides Space creation, original credential issuance/revocation, one-time admission and protected-note posting. Connecting a compatible injected wallet is optional for reads. **Any write requires an explicit connected-wallet review and signature on Chain ID 61999**; the application does not automatically transact. Only the verified canonical contract is a permitted write target. For a no-cost review, use the read-only walkthrough rather than creating new records.
 
-No further transaction is needed for this walkthrough. Historical source below is retained unchanged as archival documentation.
+The production website's `create_space` flow was exercised once with a real wallet, resulting in Space **#3**. The other four website write methods were not individually signed in production-browser QA; their onchain behavior has separate Studio evidence. Wallet rejection, account/chain switching, reload recovery and mobile signing were not comprehensively live-tested. This guide makes no claim that those cases passed.
 
----
+## Implementation and verification
 
-## Historical Phase 3 walkthrough
+- **App and tests:** [README](README.md), [testing instructions](TESTING.md)
+- **Embedded complete contract source:** [intelligent-contract/contracts/context_bound_attestation.py](intelligent-contract/contracts/context_bound_attestation.py)
+- **Canonical source / onchain provenance:** [SOURCE_PROVENANCE](SOURCE_PROVENANCE.md), [deployment manifest](DEPLOYMENT_MANIFEST_STUDIONET.md)
+- **Audit trail and known limitations:** [Phase 4E audit](PHASE_4E_SUBMISSION_AUDIT.md), [submitting and verification notes](SUBMISSION_PROJECTS.md)
 
-# Review ContextPass without claiming live success
-
-Start with `npm ci && npm run dev`. The overview states **Awaiting Onchain Verification**. The scope example is an illustration, not a classification result. No fabricated green finalized badge, transaction or committee vote is displayed.
-
-1. Read the mechanism: one trusted issuer; the original scope must cover every target requirement; each Validator independently reruns the canonical prompt.
-2. Open Spaces. Inspect a supplied Stable Studionet contract address and positive space ID. Read the immutable requirement, issuer and owner. No wallet is needed to read.
-3. Open Credentials. Inspect an original root by ID. Its holder, original scope, issuer and revoked flag remain distinct from any admission. Wallet connect/chain status is explicit. Creation/issuance/revoke forms are wired, but writes are locked.
-4. Open My admissions. Read a space/holder decision and current active membership, or prepare a one-shot application. NOT_ELIGIBLE is distinct from failed transport or unresolved consensus. Protected note UI never supplies eligibility as authority. Read public paged history.
-5. Refresh transaction verification only for a saved real ID after a future authorized signing stage. The current build has no such record. Cached state cannot confirm finality on reload.
-
-Offline automated walkthrough in tests/journey.test.ts simulates issuer → original root → React space → security space → scripted approval/denial → note → root revoke → two rejected posts → preserved public history. It tests integration wiring, not real model reasoning, majority votes or chain execution.
-
-A real demonstration requires future T01–T10 signed evidence. Show both root revocation and current membership=false; capture a rejected protected post and unchanged history. Do not infer this from a frontend badge. No actions from that future stage were executed here.
+Public notes and credentials are not private; an issuer-issued attestation is not an identity check or independent proof of skill.
