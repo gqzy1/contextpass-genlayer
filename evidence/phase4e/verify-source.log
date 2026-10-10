@@ -1,0 +1,6 @@
+
+> contextpass-genlayer@0.3.0 verify:source
+> node scripts/verify-source.mjs
+
+{"expected":"e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d","actual":"e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d","pass":true}
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.

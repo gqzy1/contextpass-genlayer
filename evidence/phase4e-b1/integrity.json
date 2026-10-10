@@ -1,0 +1,10 @@
+{
+  "sourceBytes": 17514,
+  "sourceSha256": "e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d",
+  "sourceGitBlobSha": "10edfd3d23672789b4b600360750f5041c040f6d",
+  "sourceUnchangedFromPrHead": true,
+  "deploymentManifestUnchanged": true,
+  "dependencyLockUnchanged": true,
+  "historical144Of145LogUnchanged": true,
+  "historicalTestsLogSha256": "25b1b4f59538699a7c3ab9cbfea534fec83518c96f677e356265a0097fa37c66"
+}

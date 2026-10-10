@@ -1,0 +1,33 @@
+
+> contextpass-genlayer@0.3.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /workspace/scratch/92144da5fe48/B
+
+ ❯ tests/packaging.test.ts (6 tests | 1 failed) 22ms
+   × production manifest and compiled canonical target bind the same verified deployment 14ms
+
+ Test Files  1 failed | 6 passed (7)
+      Tests  1 failed | 144 passed (145)
+   Start at  09:17:12
+   Duration  2.33s (environment 48%, import 20%, tests 15%, transform 9%, setup 7%)
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/packaging.test.ts > production manifest and compiled canonical target bind the same verified deployment
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/packaging.test.ts:10:560
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

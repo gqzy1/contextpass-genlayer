@@ -1,0 +1,50 @@
+[
+  {
+    "utc": "2026-10-10T15:18:12.785Z",
+    "method": "get_counts",
+    "args": [],
+    "value": {
+      "attestations": 1,
+      "decisions": 2,
+      "notes": 1,
+      "spaces": 3
+    }
+  },
+  {
+    "utc": "2026-10-10T15:18:21.530Z",
+    "method": "get_space",
+    "args": [
+      "3"
+    ],
+    "value": {
+      "id": 3,
+      "owner": "0xEB56F245EFEceD0899b7e23697FeE512a39DBdCc",
+      "required_scope": "Contribute a reproducible end-to-end test report for the ContextPass frontend.",
+      "status": "FOUND",
+      "title": "ContextPass Frontend QA",
+      "trusted_issuer": "0xEB56F245EFEceD0899b7e23697FeE512a39DBdCc"
+    }
+  },
+  {
+    "utc": "2026-10-10T15:18:22.649Z",
+    "method": "get_room_notes",
+    "args": [
+      "1",
+      "0",
+      "20"
+    ],
+    "value": {
+      "next_offset": 1,
+      "notes": [
+        {
+          "author": "0x5EDb6E65aaEA10A7B3CC34e8d5724e41D1f6da84",
+          "id": 1,
+          "space_id": 1,
+          "text": "Hello from an approved member"
+        }
+      ],
+      "status": "FOUND",
+      "total": 1
+    }
+  }
+]

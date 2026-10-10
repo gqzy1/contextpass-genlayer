@@ -1,3 +1,11 @@
+# Current verification navigation — Phase 4E
+
+Fresh commands, exit codes and outputs are recorded in evidence/phase4e and PHASE_4E_SUBMISSION_AUDIT.md. Earlier test counts below belong to their stated phases, not fresh executions. Known raw Python Strict failures are retained. B scripts/verify-phase4c.py and scripts/verify-onchain-readonly.mjs referenced by earlier documentation are absent in audited main; do not instruct reviewers to run missing scripts. Use the existing commands and test/source files. Prior browser QA is partial; Phase 4D includes one live create_space only.
+
+---
+
+## Historical / Superseded — retained verbatim
+
 # Phase 4B verification
 
 Address suite: 77/77 PASS. A total: 240/240 PASS (163 existing + 77 new). B frontend: 124/124 PASS (116 existing + 8 new). All offline; scripted semantic outcomes are not real model/validator results. See Phase 4B report and evidence/phase4b for actual commands and the intentional pre-fix INVALID_ADDRESS failure. Python Strict retains upstream diagnostics; final status is recorded in the report. No suppression or SDK patch.
