@@ -1,3 +1,40 @@
+# PHASE 4E CURRENT SUBMISSION READINESS — B1 UPDATE
+
+日期：2026-10-10。账号：gqzy1。当前结论：**READY FOR REVIEW**。
+
+## Phase 4E-B1：过期测试断言已修复
+
+本次仅更新 Repository B `tests/packaging.test.ts`、当前审核记录及新增 `evidence/phase4e-b1/`。基于现有 Draft PR #5 的分支 HEAD `304399f4ac6945016070bc0797e8331d991fefe6`；继续使用 `phase4e-submission-readiness`，不创建重复 PR。
+
+原 `frontendRealWalletTested=false` 断言已按真实证据改为 true。同一测试保留全部原断言，新增检查：Phase 4D `create_space` hash `0x85c5037d3ac249faca70336a6760d4538dc26407181bf71d79da091e6457d02d`、FINALIZED、Space ID 3、单次桌面测试范围；另外四项写入仍精确为 `NOT RUN VIA LIVE FRONTEND`。拒签、换链/换账户、重载/未知结果恢复精确为 `NOT RUN LIVE`，移动签名为 `NOT RUN`，不能误记 PASS。依据是未修改的 `public/deployment-manifest.json` 和 `evidence/phase4e/frontend-tx-summary.json`；本轮未重新发送交易或声称新增现场钱包验收。
+
+### 本次重新执行结果
+
+Node 24.19.0、npm 11.9.0。UTC 命令起止和退出码见 `evidence/phase4e-b1/command-results.json`；原始输出分别保存在同目录日志。
+
+| 实际命令 | exit | 结果 |
+|---|---|---|
+| `npm test` | 0 | **145/145 PASS，7/7 test files PASS**；没有删除或跳过测试 |
+| `npm run typecheck` | 0 | PASS |
+| `npm run verify:source` | 0 | PASS，canonical SHA256 与预期一致 |
+| `npm run build` | 0 | PASS，472 modules；781.88 kB / gzip 191.73 kB bundle 警告保留 |
+
+原请求写作 `npm run verify`，仓库实际只有 `verify:source`。用户本轮明确选择运行现有 `verify:source`；没有执行不存在的脚本，也没有修改 package.json。npm 的 `http-proxy` 环境配置警告保留，未改变依赖或环境来隐藏警告。
+
+`evidence/phase4e-b1/integrity.json` 重新验证 B 合约副本 17,514 字节、SHA256 `e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d`、Git blob `10edfd3d23672789b4b600360750f5041c040f6d`，并确认合约源码、JSON 部署元数据、依赖锁与原失败日志逐字节未改。Repository A 未修改，也未将前次 A 测试当成本轮重跑。
+
+### 当前审核状态与历史保留
+
+原 P1「过期 packaging 断言导致 144/145」已修复，本轮没有其他失败检查。Projects「清晰部署、演示、使用及审核证据」仍为 PARTIAL：缺失原截图/压缩包和现场覆盖限制仍存在，但测试失败这一理由已解除。其他标准判定不变。
+
+下方原 Phase 4E 报告及 `evidence/phase4e/tests.log` 的 **144 passed / 1 failed** 保持原样，仅代表 B1 前历史执行；其中「测试未修改」「断言未修复」「本轮测试失败」等描述已被本节取代，不能当作当前结果。历史日志 SHA256 见本次 integrity.json。
+
+仍为 **READY FOR REVIEW**，不能据 145/145 自动升级为 READY FOR SUBMISSION。既有许可未定、七条 Python Strict SDK 类型诊断、其余真实网页写入和异常钱包覆盖缺口、缺失旧证据仍记录；Overview 嵌套 Map 展示问题留待另行处理。PR #5 保持 Draft、未合并。本轮未修改合约、ABI、Prompt、共识、SDK、产品代码、部署元数据、依赖锁或发布工作流；未部署、未发送链上交易、未发布 Pages、未提交 Portal。完成更新后 STOP。
+
+---
+
+## Historical / Superseded — 原始 Phase 4E 报告（B1 前）
+
 # PHASE 4E FINAL SUBMISSION READINESS REPORT
 
 日期：2026-10-10。账号：gqzy1。结论：**READY FOR REVIEW**。

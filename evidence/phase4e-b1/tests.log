@@ -1,0 +1,14 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> contextpass-genlayer@0.3.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /workspace/scratch/92144da5fe48/B
+
+
+ Test Files  7 passed (7)
+      Tests  145 passed (145)
+   Start at  13:20:52
+   Duration  2.08s (environment 49%, import 19%, tests 14%, transform 10%, setup 7%)
+
