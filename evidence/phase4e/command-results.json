@@ -1,0 +1,60 @@
+[
+  {
+    "name": "npm-ci",
+    "command": [
+      "npm",
+      "ci"
+    ],
+    "cwd": "/workspace/scratch/92144da5fe48/B",
+    "startedUtc": "2026-10-10T15:17:06.236417+00:00",
+    "endedUtc": "2026-10-10T15:17:12.311797+00:00",
+    "exitCode": 0
+  },
+  {
+    "name": "tests",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "cwd": "/workspace/scratch/92144da5fe48/B",
+    "startedUtc": "2026-10-10T15:17:12.312040+00:00",
+    "endedUtc": "2026-10-10T15:17:15.111456+00:00",
+    "exitCode": 1
+  },
+  {
+    "name": "typecheck",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "cwd": "/workspace/scratch/92144da5fe48/B",
+    "startedUtc": "2026-10-10T15:17:15.111821+00:00",
+    "endedUtc": "2026-10-10T15:17:16.517345+00:00",
+    "exitCode": 0
+  },
+  {
+    "name": "verify-source",
+    "command": [
+      "npm",
+      "run",
+      "verify:source"
+    ],
+    "cwd": "/workspace/scratch/92144da5fe48/B",
+    "startedUtc": "2026-10-10T15:17:16.517542+00:00",
+    "endedUtc": "2026-10-10T15:17:16.693027+00:00",
+    "exitCode": 0
+  },
+  {
+    "name": "build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "cwd": "/workspace/scratch/92144da5fe48/B",
+    "startedUtc": "2026-10-10T15:17:16.693565+00:00",
+    "endedUtc": "2026-10-10T15:17:17.305807+00:00",
+    "exitCode": 0
+  }
+]

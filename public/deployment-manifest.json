@@ -1,10 +1,10 @@
 {
-  "status": "ONCHAIN_VERIFIED_FRONTEND_ACTIVATED_QA_PENDING",
+  "status": "ONCHAIN_VERIFIED_PUBLISHED_FRONTEND_CREATE_SPACE_SMOKE_TESTED_QA_PARTIAL",
   "chainId": 61999,
   "rpc": "https://studio.genlayer.com/api",
   "contractAddress": "0xDe9abfBe2E4A61d23e27b552e241f5Bb1d1821b8",
   "deploymentTransactionId": "0x26282c539033879705d9a8dea18c8676dae46c0cd09df9f91cb20d740f9be994",
-  "sourceHead": "c7c6e50620602d03ad4e3c116ad1532097feab8a",
+  "sourceHead": "c690a2200569977e99e4cde9bfd52bd86aa4a89e",
   "sourceSha256": "e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d",
   "genVM": "v0.2.16",
   "genlayerJs": "1.1.8",
@@ -101,16 +101,17 @@
       "rotationCount": 0
     }
   ],
-  "sourceBranch": "phase4b-address-compatibility",
+  "sourceBranch": "main",
   "writeTargetPolicy": "Canonical contract only; independent orchestration and SDK guards; manual injected-wallet signature",
-  "frontendRealWalletTested": false,
-  "frontendBrowserVisualQA": "NOT RUN",
-  "pagesPublished": false,
+  "frontendRealWalletTested": true,
+  "frontendBrowserVisualQA": "PARTIAL: prior user-observed desktop and limited mobile; Phase 4E hosted desktop load and read-only verification",
+  "pagesPublished": true,
   "verifiedObjectIds": {
     "root": 1,
     "room1": 1,
     "room2": 2,
-    "note": 1
+    "note": 1,
+    "frontendCreatedSpace": 3
   },
   "recordedSnapshot": {
     "rootRevoked": true,
@@ -119,5 +120,40 @@
     "room2HistoricalDecision": "NOT_ELIGIBLE",
     "room2Active": false
   },
-  "evidenceIndex": "ONCHAIN_EVIDENCE_INDEX.md"
+  "evidenceIndex": "https://github.com/gqzy1/context-bound-attestation-genlayer/blob/main/ONCHAIN_EVIDENCE_INDEX.md",
+  "sourceGitBlobSha": "10edfd3d23672789b4b600360750f5041c040f6d",
+  "liveFrontendUrl": "https://gqzy1.github.io/contextpass-genlayer/",
+  "frontendRealWalletTestScope": "Desktop connection and one create_space only; does not mean all writes or edge cases passed",
+  "frontendWriteSmokeTests": {
+    "create_space": {
+      "transactionId": "0x85c5037d3ac249faca70336a6760d4538dc26407181bf71d79da091e6457d02d",
+      "status": "FINALIZED",
+      "spaceId": 3,
+      "evidence": "Phase 4D user-observed hosted write; Phase 4E independent raw RPC and Explorer FINALIZED MAJORITY_AGREE SUCCESS Return 3; latest-final Space #3 fields matched"
+    },
+    "issue_attestation": "NOT RUN VIA LIVE FRONTEND",
+    "apply_and_join": "NOT RUN VIA LIVE FRONTEND",
+    "post_room_note": "NOT RUN VIA LIVE FRONTEND",
+    "revoke_attestation": "NOT RUN VIA LIVE FRONTEND"
+  },
+  "frontendWalletEdgeCaseTests": {
+    "refusal": "NOT RUN LIVE",
+    "wrongChainAndAccountChanges": "NOT RUN LIVE",
+    "reloadAndUnknownOutcomeRecovery": "NOT RUN LIVE",
+    "mobileSigning": "NOT RUN"
+  },
+  "historicalDeploymentSourceHead": "c7c6e50620602d03ad4e3c116ad1532097feab8a",
+  "historicalDeploymentSourceBranch": "phase4b-address-compatibility",
+  "recordedSnapshotScope": "Historical Phase 4C post-T10; not present total counts after Space #3",
+  "phase4eCurrentReadback": {
+    "evidenceFile": "evidence/phase4e/sdk-current-readback.json",
+    "counts": {
+      "spaces": 3,
+      "attestations": 1,
+      "decisions": 2,
+      "notes": 1
+    },
+    "space3Found": true,
+    "scope": "Fresh read snapshot only, not a permanent promise of totals"
+  }
 }
