@@ -3,6 +3,12 @@ name: ContextPass Pages
 
 on:
   workflow_dispatch:
+  # Publish when this workflow itself is revised on main; ordinary code pushes
+  # still require an explicit manual workflow_dispatch.
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/deploy-pages.yml'
 
 permissions:
   contents: read

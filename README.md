@@ -1,3 +1,27 @@
+# ContextPass — live Stable Studionet product (Phase 4D, 2026-10-10)
+
+**[Open live ContextPass demo](https://gqzy1.github.io/contextpass-genlayer/)** · [Repository A](https://github.com/gqzy1/context-bound-attestation-genlayer) · [Phase 4D closure](PHASE_4D_CLOSURE_REPORT.md)
+
+ContextPass is a community-access product built on one scope-bound GenLayer Intelligent Contract. The original issuer attests a holder's specific scope; a space fixes the trusted issuer and immutable requirement; independent Leader/Validators decide admission. Authorization remains space/root/holder-bound and protected posting is revoked when the original root is revoked. Prior public notes and historical decisions remain readable.
+
+**Current facts, overriding historical phase notes below:**
+
+- **Published frontend:** https://gqzy1.github.io/contextpass-genlayer/, deployed by a manually triggered GitHub Pages Actions workflow (first run: Success, 47s, 145/145 tests across 7 files as shown by user screenshots).
+- **Network:** Stable Studionet `61999`, `https://studio.genlayer.com/api`. **Canonical contract:** `0xDe9abfBe2E4A61d23e27b552e241f5Bb1d1821b8` (deployed in T01, user executed). A/B/deployed SHA256 `e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d` was matched in Phase 4C. The historical older contract address is not the canonical write target.
+- **Real evidence:** manually executed T01–T10 with previously verified final receipts; user-confirmed hosted desktop read-only flows for both spaces, revoked credential, Room #1 historic ELIGIBLE/current inactive and Room #2 NOT_ELIGIBLE/current inactive. Mobile Overview/My admissions visual and one mobile read-only membership test passed, based on user screenshots. T07 rotated once and did **not** attain first-round agreement; T08/T10 are expected business Rollbacks.
+- **One authorized live website write:** `create_space` [tx `0x85c5037d3ac249faca70336a6760d4538dc26407181bf71d79da091e6457d02d`](https://explorer-studio.genlayer.com/transactions/0x85c5037d3ac249faca70336a6760d4538dc26407181bf71d79da091e6457d02d), displayed by the frontend as `confirmed` with `FINALIZED receipt and matching onchain readback verified`; returned Space ID **3**. This is the user's screenshot of frontend verification; independent raw receipt/calldata retrieval and a live post-reload recovery test were not performed in Phase 4D. Do not generalize to the other four live website write methods.
+- **Safety:** manual injected-wallet signing only; **canonical address enforced independently in orchestration and SDK transport**; any custom inspected address is read-only; no automatic write retry, signing, or wallet connection at startup.
+- **Prior checks:** A 240/240 offline PASS, B 145/145 offline PASS, TypeScript Strict/build/source checks previously PASS. Python Strict **FAIL**, exactly seven pre-existing SDK diagnostics. Current Phase 4D branch does not claim fresh full test/build runs.
+- **Status:** earlier PRs merged; Phase 4D review-only PR pending approval; **Portal submissions not yet performed**. No new deployment or contract/protocol/SDK change.
+
+## Reviewer navigation
+
+[Live product](https://gqzy1.github.io/contextpass-genlayer/) · [Current closure](PHASE_4D_CLOSURE_REPORT.md) · [Demo walkthrough (historical with current addendum)](DEMO.md) · [Source provenance](SOURCE_PROVENANCE.md) · [Historical T01–T10 evidence](https://github.com/gqzy1/context-bound-attestation-genlayer/blob/main/ONCHAIN_EVIDENCE_INDEX.md)
+
+---
+
+## Historical README (prior stage claims retained, superseded for current status)
+
 # Phase 4B address compatibility candidate
 
 This branch contains the minimum `_address` normalization fix. Patched SHA256: `e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d`. Review `PHASE_4B_ADDRESS_COMPATIBILITY_REPORT.md`. The previously reported deployment at `0x97B9003a17A8EDBD1b5E3379AA659753791497d9` uses the old source and is not patched by this PR. T02–T10 remain paused. No deployment, transaction, merge or frontend unlock was performed. Earlier phase reports below remain historical.
