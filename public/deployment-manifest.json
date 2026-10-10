@@ -1,21 +1,123 @@
 {
-  "status": "PATCH_CANDIDATE_NOT_DEPLOYED",
+  "status": "ONCHAIN_VERIFIED_FRONTEND_ACTIVATED_QA_PENDING",
   "chainId": 61999,
   "rpc": "https://studio.genlayer.com/api",
-  "contractAddress": null,
-  "deploymentTransactionId": null,
-  "sourceHead": "7a7078cfb07c1d65faf5db432049a5287ce4f5a6",
+  "contractAddress": "0xDe9abfBe2E4A61d23e27b552e241f5Bb1d1821b8",
+  "deploymentTransactionId": "0x26282c539033879705d9a8dea18c8676dae46c0cd09df9f91cb20d740f9be994",
+  "sourceHead": "c7c6e50620602d03ad4e3c116ad1532097feab8a",
   "sourceSha256": "e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d",
   "genVM": "v0.2.16",
   "genlayerJs": "1.1.8",
-  "writesLocked": true,
-  "verifiedEvidence": [],
+  "writesLocked": false,
+  "verifiedEvidence": [
+    {
+      "step": "T01",
+      "transactionId": "0x26282c539033879705d9a8dea18c8676dae46c0cd09df9f91cb20d740f9be994",
+      "status": "FINALIZED",
+      "consensusRaw": "MAJORITY_AGREE",
+      "leaderExecution": "SUCCESS",
+      "resultCode": "Return",
+      "rotationCount": 0
+    },
+    {
+      "step": "T02",
+      "transactionId": "0x7ee1a2f00471548e57d7f88df97ac2eed586c5a2e219f7e0ef1626fe78a58208",
+      "status": "FINALIZED",
+      "consensusRaw": "MAJORITY_AGREE",
+      "leaderExecution": "SUCCESS",
+      "resultCode": "Return",
+      "rotationCount": 0
+    },
+    {
+      "step": "T03",
+      "transactionId": "0x5392bec255be79edc94e01992bfae19c13a66b71e416a0a0e37fa4e9249a0108",
+      "status": "FINALIZED",
+      "consensusRaw": "MAJORITY_AGREE",
+      "leaderExecution": "SUCCESS",
+      "resultCode": "Return",
+      "rotationCount": 0
+    },
+    {
+      "step": "T04",
+      "transactionId": "0xd977e00d326e41b972c1560f3912b0c7f4cc1e8766544a0c7052956243bc0e50",
+      "status": "FINALIZED",
+      "consensusRaw": "MAJORITY_AGREE",
+      "leaderExecution": "SUCCESS",
+      "resultCode": "Return",
+      "rotationCount": 0
+    },
+    {
+      "step": "T05",
+      "transactionId": "0xc36ffd19c14b7a522ea1287b8b7440dc3494d1fbba232528e9e3e4811e2532d2",
+      "status": "FINALIZED",
+      "consensusRaw": "MAJORITY_AGREE",
+      "leaderExecution": "SUCCESS",
+      "resultCode": "Return",
+      "rotationCount": 0
+    },
+    {
+      "step": "T06",
+      "transactionId": "0x7592f079b93662134a88d14a34242817314cfe02a413cd36584afd70d0ffb61d",
+      "status": "FINALIZED",
+      "consensusRaw": "MAJORITY_AGREE",
+      "leaderExecution": "SUCCESS",
+      "resultCode": "Return",
+      "rotationCount": 0
+    },
+    {
+      "step": "T07",
+      "transactionId": "0xbd5200b6dfbca29c91bd4c4f0d473b4447af4042e35b7db5423766a6ced838c6",
+      "status": "FINALIZED",
+      "consensusRaw": "MAJORITY_AGREE",
+      "leaderExecution": "SUCCESS",
+      "resultCode": "Return",
+      "rotationCount": 1
+    },
+    {
+      "step": "T08",
+      "transactionId": "0x42765027562169a896139dc2d676a4c0140179bdbd610c8d873e09ce6557a2dc",
+      "status": "FINALIZED",
+      "consensusRaw": "MAJORITY_AGREE",
+      "leaderExecution": "ERROR",
+      "resultCode": "Rollback",
+      "rotationCount": 0
+    },
+    {
+      "step": "T09",
+      "transactionId": "0xcf88f40a1beab8a8c979b7c0f3442e0ba484ac79bda78da8668c4d214669f2d6",
+      "status": "FINALIZED",
+      "consensusRaw": "MAJORITY_AGREE",
+      "leaderExecution": "SUCCESS",
+      "resultCode": "Return",
+      "rotationCount": 0
+    },
+    {
+      "step": "T10",
+      "transactionId": "0x9b3365e65452c635a0663218edec0913dddf59f777b1be9209b03763959da01b",
+      "status": "FINALIZED",
+      "consensusRaw": "MAJORITY_AGREE",
+      "leaderExecution": "ERROR",
+      "resultCode": "Rollback",
+      "rotationCount": 0
+    }
+  ],
   "sourceBranch": "phase4b-address-compatibility",
-  "previousDeploymentUserReported": {
-    "address": "0x97B9003a17A8EDBD1b5E3379AA659753791497d9",
-    "sourceSha256": "4412035632f586b72c376fb42e618f68ff665063cf356dd727849d76dd7f08ec",
-    "status": "FINALIZED / Accepted / SUCCESS (user supplied)",
-    "blocker": "issue_attestation Rollback / INVALID_ADDRESS; T02\u2013T10 paused",
-    "independentlyVerified": false
-  }
+  "writeTargetPolicy": "Canonical contract only; independent orchestration and SDK guards; manual injected-wallet signature",
+  "frontendRealWalletTested": false,
+  "frontendBrowserVisualQA": "NOT RUN",
+  "pagesPublished": false,
+  "verifiedObjectIds": {
+    "root": 1,
+    "room1": 1,
+    "room2": 2,
+    "note": 1
+  },
+  "recordedSnapshot": {
+    "rootRevoked": true,
+    "room1HistoricalDecision": "ELIGIBLE",
+    "room1Active": false,
+    "room2HistoricalDecision": "NOT_ELIGIBLE",
+    "room2Active": false
+  },
+  "evidenceIndex": "ONCHAIN_EVIDENCE_INDEX.md"
 }

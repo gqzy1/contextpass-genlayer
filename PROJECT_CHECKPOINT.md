@@ -1,3 +1,28 @@
+# Phase 4C-B1 — Frontend recovery checkpoint (2026-10-10)
+
+Repository B: gqzy1/contextpass-genlayer. Authenticated GitHub account: gqzy1 / 155161534.
+Branch: phase4c-frontend-activation. Parent: 3eeb4ff52359ffe39e146cce4ac402def612d503.
+
+Recovered the uncommitted Phase 4C implementation from the preserved local worktree without changing that worktree or Repository A. No saved Phase 4C remote branch was found. Scope: frontend activation code, recorded deployment manifest, offline receipt fixtures, tests and this checkpoint only. A's archived Phase 4C reports are the integration authority; older checkpoints below remain historical.
+
+Completed: canonical address 0xDe9abfBe2E4A61d23e27b552e241f5Bb1d1821b8; independent Transactions.submit and SdkTransport.write guards; manual injected-wallet submission; Leader-mode receipt decoding; FINALIZED/accepted/normal execution plus exact calldata binding and method-specific readback; fail-closed unresolved consensus; saved transaction recovery; existing shared 429 cooldown/bounded reads/no write retries; historical admission separated from current root-bound access. Arbitrary inspection targets remain read-only. Startup/reload never connects, signs or submits automatically. Evidence link points to A's already archived index.
+
+Actual final checks in this recovered worktree:
+- npm test -- --reporter=json --outputFile=evidence/phase4c-b1/frontend-results.json: 145/145 PASS, 7 files, zero failed/pending.
+- npm run typecheck: PASS; strict=true, skipLibCheck=false.
+- npm run verify:source: PASS; SHA256 e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d.
+- npm run build: PASS; 472 modules; main chunk 781.70 kB (gzip 191.66 kB); >500 kB warning remains.
+- A archived canonical bytes vs B copy: 17,514 bytes, byte-identical; Git blob 10edfd3d23672789b4b600360750f5041c040f6d.
+- Frozen architecture, Python source, package.json and package-lock.json unchanged from parent. git diff --check: PASS.
+
+First recovery check accidentally tested the baseline files and failed (15 frontend tests and TypeScript missing activation exports). Restored files were re-copied, checked and the full checks rerun successfully. That failed run is not counted as PASS. No protocol or lock-version changes were needed.
+
+NOT RUN / remaining: real frontend wallet signing/submission/reload, browser desktop/mobile/console QA, Python lint/typecheck reruns, full release documentation, formal Phase 4C Draft PR, merge, Pages and Portal. Archived A report records seven pre-existing Python Strict diagnostics as FAIL; this checkpoint neither fixes nor relabels them. Captured receipts are offline SDK compatibility fixtures, not new live transactions. Real T01–T10 were not repeated and no network transactions or deployment occurred.
+
+Do not change canonical source, frozen protocol or pinned SDK. Commit/checkpoint is intended for the independent GitHub branch; exact delivered HEAD is the resulting branch ref. STOP immediately after remote saving; no next phase, browser QA or publication authorized here.
+
+---
+
 # Phase 4B address compatibility checkpoint
 
 Account: gqzy1, ID 155161534 verified. New branch: phase4b-address-compatibility. A base: daf0bf9a70357fb626b0a8e732826c8db6e0c1fc; B base: 3c9760cf6e1eb444123b9a85296a174fd98b4123. Original branches/PRs/main are unchanged. A/B source SHA256: `e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d`, byte-identical. Only `_address` changes in production contract; original method ABI, permissions, state machine, frozen prompt and custom consensus remain unchanged.

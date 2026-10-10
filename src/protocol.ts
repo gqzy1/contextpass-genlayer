@@ -3,7 +3,15 @@ import { CalldataAddress, type CalldataEncodable } from 'genlayer-js/types';
 export const CHAIN_ID = 61999;
 export const RPC = 'https://studio.genlayer.com/api';
 export const SOURCE_SHA = 'e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d';
-export const WRITES_LOCKED = true; // Phase 3 authorization boundary; no runtime/env unlock.
+// Phase 4C: reviewed, immutable deployment binding; no URL/env/storage override.
+export const CANONICAL_CONTRACT: Address = '0xDe9abfBe2E4A61d23e27b552e241f5Bb1d1821b8';
+export const DEPLOYMENT_TRANSACTION = '0x26282c539033879705d9a8dea18c8676dae46c0cd09df9f91cb20d740f9be994';
+export const DEMO_HOLDER: Address = '0x5EDb6E65aaEA10A7B3CC34e8d5724e41D1f6da84';
+export const WRITES_LOCKED = false; // Activated only with the two canonical-target guards below.
+export function assertCanonicalTarget(target: Address): void {
+  if (!same(address(target), CANONICAL_CONTRACT)) throw new Error('CANONICAL_TARGET_REQUIRED');
+  if (CHAIN_ID !== 61999 || RPC !== 'https://studio.genlayer.com/api' || SOURCE_SHA !== 'e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d') throw new Error('DEPLOYMENT_UNVERIFIED');
+}
 export type WriteMethod = 'create_space'|'issue_attestation'|'revoke_attestation'|'apply_and_join'|'post_room_note';
 export type ReadMethod = 'get_space'|'get_attestation'|'get_decision'|'is_active_member'|'get_room_notes'|'get_counts';
 export type Intent = { method: WriteMethod; args: string[]; account: Address; contract: Address };
@@ -66,7 +74,9 @@ export function validateRead(method:ReadMethod,value:unknown):unknown {
   return v;
 }
 const messages: Record<string,string> = {
-  PHASE3_WRITES_LOCKED:'Real writes are locked in Phase 3. No signature or transaction was requested.',
+  PHASE3_WRITES_LOCKED:'Real writes are locked. No signature or transaction was requested.',
+  CANONICAL_TARGET_REQUIRED:'This inspection target is read-only. Writes require the verified canonical ContextPass contract.',
+  DEPLOYMENT_UNVERIFIED:'Deployment binding is invalid. Writing is blocked.',
   WRONG_CHAIN:'Switch your wallet to Stable Studionet (Chain ID 61999).', WALLET_REJECTED:'You declined the wallet request. No approval is recorded.',
   HOLDER_ONLY:'Only the original credential holder may apply.', ISSUER_ONLY:'Only the original issuer may revoke this credential.',
   UNTRUSTED_ISSUER:'This space trusts a different issuer.', ROOT_REVOKED:'The original credential has been revoked.',

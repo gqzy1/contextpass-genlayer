@@ -6,7 +6,8 @@ import { type Receipt, type Transport } from '../src/transport';
 import { ReadQueue } from '../src/rpc';
 export const owner='0x1111111111111111111111111111111111111111' as Address;
 export const holder='0x2222222222222222222222222222222222222222' as Address;
-export const contract='0x3333333333333333333333333333333333333333' as Address;
+// Public deployment address used only as a binding fixture: all transports remain offline mocks.
+export const contract='0xDe9abfBe2E4A61d23e27b552e241f5Bb1d1821b8' as Address;
 export const hash=`0x${'a'.repeat(64)}`;
 export const intent:Intent={method:'apply_and_join',args:['1','2'],account:holder,contract};
 export function receipt(i:Intent=intent,value:unknown='ELIGIBLE'):Receipt{return {hash,status:'FINALIZED',sender:i.account,recipient:i.contract,method:i.method,args:writeArgs(i.method,i.args,i.account),returned:value,returnedNormally:true};}
