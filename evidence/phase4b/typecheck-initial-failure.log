@@ -1,0 +1,8 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> contextpass-genlayer@0.3.0 typecheck
+> tsc --noEmit
+
+tests/address-compatibility.test.ts(12,65): error TS2345: Argument of type 'string' is not assignable to parameter of type '`0x${string}`'.
+tests/address-compatibility.test.ts(19,61): error TS2345: Argument of type 'string' is not assignable to parameter of type '`0x${string}`'.
+tests/address-compatibility.test.ts(19,91): error TS2345: Argument of type 'string' is not assignable to parameter of type '`0x${string}`'.

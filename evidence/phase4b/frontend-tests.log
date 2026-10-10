@@ -1,0 +1,6 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> contextpass-genlayer@0.3.0 test
+> vitest run --reporter=json --outputFile=evidence/phase4b/frontend-results.json
+
+JSON report written to /workspace/scratch/114f91cc6678/repository-b/evidence/phase4b/frontend-results.json

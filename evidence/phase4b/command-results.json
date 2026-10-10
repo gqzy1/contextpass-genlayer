@@ -1,0 +1,37 @@
+[
+  {
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--reporter=json",
+      "--outputFile=evidence/phase4b/frontend-results.json"
+    ],
+    "exitCode": 0,
+    "evidence": "frontend-results.json; exec session 40241 exit 0"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "verify:source"
+    ],
+    "exitCode": 0
+  }
+]

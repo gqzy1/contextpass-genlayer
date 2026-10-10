@@ -2,7 +2,7 @@ import { getAddress, hexToBytes, type Address } from 'viem';
 import { CalldataAddress, type CalldataEncodable } from 'genlayer-js/types';
 export const CHAIN_ID = 61999;
 export const RPC = 'https://studio.genlayer.com/api';
-export const SOURCE_SHA = '4412035632f586b72c376fb42e618f68ff665063cf356dd727849d76dd7f08ec';
+export const SOURCE_SHA = 'e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d';
 export const WRITES_LOCKED = true; // Phase 3 authorization boundary; no runtime/env unlock.
 export type WriteMethod = 'create_space'|'issue_attestation'|'revoke_attestation'|'apply_and_join'|'post_room_note';
 export type ReadMethod = 'get_space'|'get_attestation'|'get_decision'|'is_active_member'|'get_room_notes'|'get_counts';

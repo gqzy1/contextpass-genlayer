@@ -1,13 +1,21 @@
 {
-  "status": "NOT_DEPLOYED",
+  "status": "PATCH_CANDIDATE_NOT_DEPLOYED",
   "chainId": 61999,
   "rpc": "https://studio.genlayer.com/api",
   "contractAddress": null,
   "deploymentTransactionId": null,
-  "sourceHead": "daf0bf9a70357fb626b0a8e732826c8db6e0c1fc",
-  "sourceSha256": "4412035632f586b72c376fb42e618f68ff665063cf356dd727849d76dd7f08ec",
+  "sourceHead": "7a7078cfb07c1d65faf5db432049a5287ce4f5a6",
+  "sourceSha256": "e50cb6703ba63da5095dafc5d9867246888c5151d0773489aed3166033484b3d",
   "genVM": "v0.2.16",
   "genlayerJs": "1.1.8",
   "writesLocked": true,
-  "verifiedEvidence": []
+  "verifiedEvidence": [],
+  "sourceBranch": "phase4b-address-compatibility",
+  "previousDeploymentUserReported": {
+    "address": "0x97B9003a17A8EDBD1b5E3379AA659753791497d9",
+    "sourceSha256": "4412035632f586b72c376fb42e618f68ff665063cf356dd727849d76dd7f08ec",
+    "status": "FINALIZED / Accepted / SUCCESS (user supplied)",
+    "blocker": "issue_attestation Rollback / INVALID_ADDRESS; T02\u2013T10 paused",
+    "independentlyVerified": false
+  }
 }
