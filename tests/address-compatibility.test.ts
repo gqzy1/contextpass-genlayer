@@ -10,7 +10,7 @@ describe.each([A,B] as const)('pinned SDK address wire compatibility %s',(wallet
   const decoded=abi.calldata.decode(abi.calldata.encode(encodedAddress(wallet)));
   expect(decoded).toBeInstanceOf(CalldataAddress);
   expect((decoded as CalldataAddress).bytes).toEqual(hexToBytes(wallet));
-  expect(WRITES_LOCKED).toBe(true);
+  expect(WRITES_LOCKED).toBe(false);
  });
  it('plain numeric calldata remains bigint rather than becoming an address',()=>{
   expect(abi.calldata.decode(abi.calldata.encode(BigInt(wallet)))).toBe(BigInt(wallet));

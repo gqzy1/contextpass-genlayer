@@ -2,11 +2,11 @@ import { createClient, abi } from 'genlayer-js';
 import { studionet } from 'genlayer-js/chains';
 import { TransactionHashVariant, type CalldataEncodable, type GenLayerTransaction, type TransactionHash } from 'genlayer-js/types';
 import { type Address } from 'viem';
-import { CHAIN_ID, RPC, WRITES_LOCKED, type Intent, type ReadMethod, writeArgs, record, same } from './protocol';
+import { CHAIN_ID, RPC, WRITES_LOCKED, assertCanonicalTarget, type Intent, type ReadMethod, writeArgs, record, same } from './protocol';
 import { RateLimitError, retryAfter } from './rpc';
 import type { Provider } from './wallet';
 const calldata=abi.calldata;
-export type Receipt = { hash:string; status:string; sender:string; recipient:string; method:string; args:CalldataEncodable[]; returned:unknown; returnedNormally:boolean };
+export type Receipt = { hash:string; status:string; sender:string; recipient:string; method:string; args:CalldataEncodable[]; returned:unknown; returnedNormally:boolean; failureKind?:'rollback'|'consensus'|'execution'; failureReason?:string };
 export interface Transport { read(contract:Address,method:ReadMethod,args:CalldataEncodable[]):Promise<unknown>; write(intent:Intent):Promise<string>; receipt(hash:string):Promise<Receipt> }
 /** The pinned SDK ignores HTTP status/Retry-After. Preserve those before its JSON decoder. */
 export function installRpcGuard(host:typeof globalThis=globalThis):()=>void {
@@ -42,6 +42,7 @@ export class SdkTransport implements Transport {
   }
   async read(contract:Address,method:ReadMethod,args:CalldataEncodable[]){return this.reader.readContract({address:contract,functionName:method,args,jsonSafeReturn:false,transactionHashVariant:TransactionHashVariant.LATEST_FINAL});}
   async write(intent:Intent){
+    assertCanonicalTarget(intent.contract); // Independent transport guard, before factory or provider.
     if(!this.permitWrite())throw new Error('PHASE3_WRITES_LOCKED');
     if(!this.provider)throw new Error('Connect a wallet first.');
     const client=this.factory(intent.account,guardedProvider(this.provider,intent));
@@ -51,11 +52,21 @@ export class SdkTransport implements Transport {
   async receipt(hash:string){if(!/^0x[\da-f]{64}$/i.test(hash))throw new Error('Invalid transaction ID.');
     const tx:GenLayerTransaction=await this.reader.getTransaction({hash:hash as TransactionHash});
     const receipts=tx.consensus_data?.leader_receipt;
-    const last=receipts?.[receipts.length-1];let returned:unknown;let normal=false;
+    // Studio's leader_receipt array can also contain a canceled validator receipt.
+    // Select the actual Leader in the final round; never use the final array element.
+    const last=receipts?.filter(r=>r.mode==='leader').at(-1);
+    const fieldsTx=record(tx);
+    const consensusAccepted=fieldsTx.result_name==='MAJORITY_AGREE' && tx.consensus_data?.final!==false;
+    let returned:unknown;let normal=false;let failureKind:Receipt['failureKind']='consensus';let failureReason:string|undefined;
     if(last){const result:unknown=last.result;
       const raw=typeof result==='string'?result:record(result).raw;
       if(typeof raw==='string'){const bytes=Uint8Array.from(atob(raw),c=>c.charCodeAt(0));
-        if(bytes.length>1 && bytes[0]===0 && !last.error && tx.txExecutionResultName!=='FINISHED_WITH_ERROR' && tx.consensus_data?.final!==false){returned=calldata.decode(bytes.slice(1));normal=true;}}
+        if(consensusAccepted){
+          failureKind='execution';
+          if(bytes.length>1 && bytes[0]===0 && !last.error && last.execution_result==='SUCCESS' && tx.txExecutionResultName!=='FINISHED_WITH_ERROR'){
+            returned=calldata.decode(bytes.slice(1));normal=true;failureKind=undefined;
+          }else if(bytes[0]===1){failureKind='rollback';failureReason=new TextDecoder('utf-8',{fatal:true}).decode(bytes.slice(1));}
+        }}
     }
     // SDK's decoded calldata supplies the actual submitted method/arguments.
     let call=tx.txDataDecoded && 'callData' in tx.txDataDecoded ? tx.txDataDecoded.callData as unknown : undefined;
@@ -67,7 +78,7 @@ export class SdkTransport implements Transport {
     const fields=call instanceof Map?Object.fromEntries(call):call;
     const input=fields && typeof fields==='object'?record(fields):{};
     const args=Array.isArray(input.args)?input.args as CalldataEncodable[]:[];
-    return {hash:String(tx.hash??tx.txId??''),status:String(tx.statusName??tx.status??''),sender:String(tx.sender??tx.from_address??''),recipient:String(tx.recipient??tx.to_address??''),method:String(input.method??''),args,returned,returnedNormally:normal};
+    return {hash:String(tx.hash??tx.txId??''),status:String(tx.statusName??tx.status??''),sender:String(tx.sender??tx.from_address??''),recipient:String(tx.recipient??tx.to_address??''),method:String(input.method??''),args,returned,returnedNormally:normal,failureKind,failureReason};
   }
 }
 export function assertReceiptBinding(receipt:Receipt,intent:Intent,hash:string){
