@@ -1,0 +1,36 @@
+[
+  {
+    "name": "contract-lint",
+    "command": [
+      "/workspace/scratch/114f91cc6678/phase0-env/bin/genvm-lint",
+      "check",
+      "intelligent-contract/contracts/context_bound_attestation.py",
+      "--json"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-09T20:38:09.542031+00:00"
+  },
+  {
+    "name": "contract-default-typecheck",
+    "command": [
+      "/workspace/scratch/114f91cc6678/phase0-env/bin/genvm-lint",
+      "typecheck",
+      "intelligent-contract/contracts/context_bound_attestation.py",
+      "--json"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-09T20:38:09.758801+00:00"
+  },
+  {
+    "name": "contract-strict-typecheck",
+    "command": [
+      "/workspace/scratch/114f91cc6678/phase0-env/bin/genvm-lint",
+      "typecheck",
+      "--strict",
+      "intelligent-contract/contracts/context_bound_attestation.py",
+      "--json"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-09T20:38:10.737127+00:00"
+  }
+]

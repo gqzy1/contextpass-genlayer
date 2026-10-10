@@ -1,0 +1,14 @@
+{
+  "command": [
+    "npm",
+    "ci",
+    "--offline",
+    "--ignore-scripts",
+    "--prefix",
+    "../phase3-install-check"
+  ],
+  "exit_code": 0,
+  "packages": 316,
+  "network": "cache only; no registry or GenLayer call",
+  "used_for_final_checks": true
+}
