@@ -63,3 +63,5 @@ jobs:
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+# Phase 4E approved post-merge Pages redeploy trigger (workflow behavior unchanged).
